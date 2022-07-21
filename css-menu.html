@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .head{
+      min-width: 1400px;
+      height: 32px;
+      background-color: rgb(4, 45, 57);
+    }
+
+    .nav{
+      display: flex;
+      height: 32px;
+      color: rgb(162, 174, 179);
+    }
+    img{
+      display: block;
+      line-height: 32px;
+      margin: 0 20px 0 10px;
+    }
+    .nav-item{
+      min-width: 1200px;
+      display: block;
+      list-style: none;
+      position: relative;
+      height: 32px;
+    }
+    .item-title{
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      text-align: center;
+      line-height: 32px;
+      font-size: 20px;
+      border-radius: 4px;
+    }
+    .item-title:hover{
+      background-color: rgb(17, 63, 77);
+    }
+    .item-title:hover .first-nav{
+      display: block;
+    }
+    .first-nav{
+      display: none;
+      width: 280px;
+      margin:  0 10px;
+      position: absolute;
+      top: 100%;
+      left: -10px;
+      list-style: none;
+    }
+    .first-nav li{
+      position: relative;
+      width: 100%;
+      height: 34px;
+      font-size: 14px;
+      line-height: 34px;
+      text-align: left;
+      padding-left: 28px;
+      background-color: rgb(0, 38, 53);
+    }
+    .click::before{
+      position: absolute;
+      content: "\2714";
+      color: #fff;
+      left: 5px;
+    }
+    .right::after{
+      position: absolute;
+      content: ">";
+      color: #fff;
+      right: 5px;
+    }
+    .first-nav .disable{
+      color: #666;
+      cursor: none;
+    }
+    .first-item{
+      color: #fff;
+      position: relative;
+      cursor:grab;
+    }
+    .first-item:hover,.second-item:hover{
+      background-color: rgb(0,103,134);
+    }
+    .disable:hover{
+      background-color: rgb(0, 38, 53);
+    }
+    .first-item:hover > .second-nav{
+      display: block;
+    }
+    .second-nav{
+      display: none;
+      position: absolute;
+      width: 200px;
+      left:100%;
+      top:-10px;
+      box-shadow: 1px 1px 10px rgb(52, 52, 52);
+    }
+    .second-item{
+      width: 172px !important;
+      box-sizing: content-box;
+    }
+    .underline{
+      border-bottom: 1px solid #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="head">
+    <div class="nav">
+      <img src="./vscode.png" alt="" srcset="">
+      <ul class="nav-item">
+        <li class="item-title">文件(F)
+          <ul class="first-nav">
+            <li class="first-item">新建文本文件</li>
+            <li class="first-item">新建文件...</li>
+            <li class="first-item click underline">新建窗口 </li>
+            <li class="first-item">打开文件...</li>
+            <li class="first-item">打开文件夹...</li>
+            <li class="first-item">从文件打开工作区...</li>
+            <li class="first-item underline right">打开最近的元素
+              <ul class="second-nav">
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+              </ul>
+            </li>
+            <li class="first-item">将文件夹添加到工作区</li>
+            <li class="first-item">将工作区另存为</li>
+            <li class="first-item underline">复制工作区</li>
+            <li class="first-item">保存</li>
+            <li class="first-item">另存为...</li>
+            <li class="first-item underline disable">全部保存</li>
+            <li class="first-item">自动保存</li>
+            <li class="first-item underline right">首选项
+              <ul class="second-nav">
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+              </ul>
+            </li>
+            <li class="first-item">还原文件</li>
+            <li class="first-item">关闭编辑器</li>
+            <li class="first-item underline">关闭窗口</li>
+            <li class="first-item">退出</li>
+          </ul>
+        </li>
+        <li class="item-title">编辑(E)
+          <ul class="first-nav">
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item right">最近的元素
+              <ul class="second-nav">
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+                <li class="second-item">没写₍₍ (̨̡ ‾᷄ᗣ‾᷅ )̧̢ ₎₎</li>
+              </ul>
+            </li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+          </ul>
+        </li>
+        <li class="item-title">选择(S)
+          <ul class="first-nav">
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+          </ul>
+        </li>
+        <li class="item-title">查看(V)
+          <ul class="first-nav">
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+          </ul>
+        </li>
+        <li class="item-title">转到(G)
+          <ul class="first-nav">
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+          </ul>
+        </li>
+        <li class="item-title">运行(R)
+          <ul class="first-nav">
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+          </ul>
+        </li>
+        <li class="item-title">终端(T)
+          <ul class="first-nav">
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+          </ul>
+        </li>
+        <li class="item-title">帮助(H)
+          <ul class="first-nav">
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">最近的元素</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+            <li class="first-item">占位符(˶‾᷄ ⁻̫ ‾᷅˵)</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

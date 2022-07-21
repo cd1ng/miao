@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .slider {
+        height: 460px;
+        margin-bottom: 15px;
+    }
+
+    .slider-nav {
+        background: #470d0c;
+        width: 232px;
+        height: 460px;
+    }
+
+    .slider-ul {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .slider-li a {
+        display: block;
+        color: #FFF;
+        padding-left: 30px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        background: url(../images/xiaomi_07.png) 200px center no-repeat;
+    }
+
+    .slider-li:hover {
+        background: orange;
+    }
+
+    /* 轮播图样式 */
+    .banenr-center {
+        width: 990px;
+        height: 460px;
+        float: left;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .banenr-center img {
+        width: 990px;
+        height: 460px;
+    }
+
+    /* 轮播项容器 */
+    .banenr-center .content {
+        width: 7920px;
+        height: 460px;
+        position: absolute;
+    }
+
+    .banenr-center .content .item {
+        float: left;
+    }
+
+    /* 左右按钮 */
+    .banenr-center .btn {
+        width: 30px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(41, 34, 34, 0.4);
+        text-align: center;
+        font: bold 18px/50px '宋体';
+        color: #fff;
+        display: none;
+    }
+
+    .banenr-center .btn-right {
+        right: 0;
+    }
+
+    .banenr-center:hover .btn {
+        display: block;
+    }
+
+    /* 小点样式 */
+    .controls {
+        display: fixed;
+        position: absolute;
+        left: 40%;
+        bottom: 5%;
+    }
+
+    /* 指示点设置 */
+    .controls .controls-li {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background-color: #801819;
+        border-radius: 50%;
+        margin: 0 3px;
+        border: 3px solid #ad5c59;
+    }
+
+    .controls .controls-li:hover {
+        background-color: #ee7f86;
+        cursor: pointer;
+    }
+
+    .controls .active {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background-color: #ee7f86;
+        border-radius: 50%;
+        margin: 0 3px;
+        border: 3px solid #ad5c59;
+    }
+
+  </style>
+</head>
+<body>
+    <div class="banner">
+      <!-- 轮播图 Start -->
+      <div id="bannerCenter" class="banenr-center">
+        <!-- 轮播项 -->
+        <div class="content">
+          <!-- 最后一个轮播项 -->
+          <div class="item">
+            <a href="#">
+              <img src="./banner_img/banner6.jpg">
+            </a>
+          </div>
+          <!-- 第一个轮播项 -->
+          <div class="item">
+            <a href="#">
+              <img src="./banner_img/banner1.jpg">
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="./banner_img/banner2.jpg">
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="./banner_img/banner3.jpg">
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="./banner_img/banner4.jpg">
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="./banner_img/banner5.jpg">
+            </a>
+          </div>
+          <div class="item">
+            <a href="#">
+              <img src="./banner_img/banner6.jpg">
+            </a>
+          </div>
+          <!-- 第一个轮播项 -->
+          <div class="item">
+            <a href="#">
+              <img src="./banner_img/banner1.jpg">
+            </a>
+          </div>
+        </div>
+
+        <!-- 左按钮 -->
+        <a class="btn btn-left" href="javascript:">&lt;</a>
+
+        <!-- 右按钮 -->
+        <a class="btn btn-right" href="javascript:">&gt;</a>
+
+        <!-- 一组小点按钮 -->
+        <ul class="controls">
+          <li class="active"></li>
+          <li class="controls-li"></li>
+          <li class="controls-li"></li>
+          <li class="controls-li"></li>
+          <li class="controls-li"></li>
+          <li class="controls-li"></li>
+        </ul>
+      </div>
+      <!-- 轮播图 End -->
+    </div>
+  </div>
+  <script>
+  const $banner = document.querySelector('.banner')
+  const $content = document.querySelector('.content')
+  const $btn_left = document.querySelector('btn-left')
+  const $btn_right = document.querySelector('btn-right')
+  const $controls = document.querySelector('.controls')
+  const bannerLength = 6                                            // 设定图片数量
+  const width = bannerCenter.offsetWidth
+  const delayMove = 2000                                             // 移动定时器
+
+  let playFlag                                                      // 自动播放标志位
+  let index = 1                                                     // 图片索引
+  let moveDirection                                                 // 左右移动标志位
+
+  $content.style.transform = `translateX(${-width * index}px)`      // 初始移动到索引1
+
+  // 点击事件委托
+  $banner.addEventListener("click", (event) => {
+    let target = event.target;
+    switch (target.className) {
+      //左箭头
+      case "btn btn-left":
+        leftClick()
+        break
+      //右箭头
+      case "btn btn-right":
+        rightClick()
+        break
+      //指示点
+      case "controls-li":
+        pointClick(target)
+        break
+    }
+  })
+
+
+  //左键事件
+  let leftClick = () => {
+    moveDirection = 0
+    move()
+    //索引为0
+    if (index === 0) {
+      //执行动画后，移动索引位置
+      $content.ontransitionend = () => {
+        index = bannerLength;
+        $content.style.transform = `translateX(${-width * index}px)`
+        // 取消过渡动画
+        $content.style.transition = 'none'
+        $content.ontransitionend = 'none'
+      }
+    }
+    //改变指示点
+    for (let i = 0; i < bannerLength; i++) {
+      $controls.children[i].className = ((i + 1) % bannerLength === index ? 'active' : 'controls-li')
+    }
+  }
+
+  //右键事件
+  let rightClick = () => {
+    moveDirection = 1
+    move()
+    //索引为图像数+1
+    if (index === bannerLength + 1) {
+      //执行动画后，移动索引位置
+      $content.ontransitionend = () => {
+        index = 1
+        $content.style.transform = `translateX(${-width * index}px)`
+        // 取消过渡动画
+        $content.style.transition = 'none'
+        $content.ontransitionend = 'none'
+      }
+    }
+    //改变指示点
+    for (let i = 0; i < bannerLength; i++) {
+      $controls.children[i].className = ((index - 1) % bannerLength === i ? 'active' : 'controls-li')
+    }
+  }
+
+  //指示点事件
+  let pointClick = (target) =>{
+    //重置指示点为未点击状态
+    for (let i = 0; i < bannerLength; i++) {
+      target.parentNode.children[i].className = 'controls-li'
+    }
+    target.className = 'active'
+    for (let i = 0; i < bannerLength; i++) {
+      if (target.parentNode.children[i].matches('.active') == true) {
+        index = i + 1
+        $content.style.transition = 'transform 0.2s'
+        $content.style.transform = `translateX(${-width * index}px)`
+      }
+    }
+  }
+
+  // 自动播放
+  function autoPlay() {
+    playFlag = setInterval(() => { rightClick() }, delayMove)
+  }
+  autoPlay()
+
+  // 移动到轮播图上停止播放
+  $banner.onmouseenter = () => { clearInterval(playFlag) }
+
+  // 移除后轮播图上开始播放
+  $banner.onmouseleave = () => { autoPlay() }
+
+  // 移动
+  function move() {
+    moveDirection === 1 ? index++ : index--
+    $content.style.transition = 'transform 0.2s'
+    $content.style.transform = `translateX(${-width * index}px)`
+  }
+
+
+  </script>
+</body>
+</html>

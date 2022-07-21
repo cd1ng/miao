@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul{
+      list-style: none;
+    }
+    .menu{
+      font-size: 20px;
+      background-color: rgb(151, 151, 228);
+    }
+    .menu-list{
+      display: inline-block;
+      margin: 10px;
+      position: relative;
+    }
+    .menu-list ul{
+      display: none;
+      position: relative;
+    }
+    .menu-list:hover ul{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <ul class="menu">
+    <li class="menu-list">文件
+      <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+      </ul>
+    </li>
+    <li class="menu-list">编辑</li>
+    <li class="menu-list">选择</li>
+    <li class="menu-list">查看</li>
+  </ul>
+</body>
+</html>

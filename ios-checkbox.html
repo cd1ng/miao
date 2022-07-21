@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  .checkbox {
+    visibility: hidden;
+  }
+  .label {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    position: relative;
+    background-color: #fff;
+
+    border: 1px solid #666;
+    border-radius: 50px;
+
+    cursor: pointer;
+    transition: background-color 0.3s linear;
+  }
+
+  .checkbox:checked + .label {
+    background-color: greenyellow;
+  }
+
+  .ball {
+    position: absolute;
+    height: 34px;
+    width: 34px;
+    top: 3px;
+    left: 3px;
+    border-radius: 50%;
+
+
+    background: #fff;
+    box-shadow: 0 0 3px #666;
+    animation: slideOff 0.3s linear forwards;
+    z-index: 99;
+  }
+
+  .checkbox:checked+.label .ball {
+    animation: slideOn 0.3s linear forwards;
+  }
+
+  @keyframes slideOn {
+    0% {
+      transform: translateX(0) scale(1);
+    }
+    50% {
+      transform: translateX(20px) scaleX(1.5) scaleY(0.9);
+    }
+    100% {
+      transform: translateX(40px) scale(1);
+    }
+  }
+
+  @keyframes slideOff {
+    0% {
+      transform: translateX(40px) scale(1);
+    }
+    50% {
+      transform: translateX(20px) scaleX(1.3) scaleY(0.9);
+    }
+    100% {
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  .ball-background{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: calc(50% - 10px);
+    left: 3px;
+    border-radius: 50%;
+    background: #fff;
+    transition: 0.32s ease-in;
+  }
+
+  .checkbox:checked+.label .ball-background{
+    width: 30px;
+    height: 30px;
+    left: 43px;
+    top: 5px;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="ball-show" class="checkbox">
+    <label for="ball-show" class="label">
+      <div class="ball"></div>
+      <div class="ball-background"></div>
+    </label>
+  </div>
+</body>
+</html>
